@@ -1,0 +1,26 @@
+curl -X GET "http://localhost:9000/verify"
+
+curl -X POST "http://localhost:9000/generate_quiz" \
+     -H "Authorization: Basic YWxpY2U6d29uZGVybGFuZA==" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "test_type": "Test de positionnement",
+           "categories": ["BDD"],
+           "number_of_questions": 5
+         }'
+
+
+curl -X POST "http://localhost:9000/create_question" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "admin_username": "admin",
+           "admin_password": "4dm1N",
+           "question": "A quoi sert QUALIFY() dans SQL" ?",
+           "subject": "BDD",
+           "correct": ["Bla"],
+           "use": "multiple_choice",
+           "responseA": "Londres",
+           "responseB": "Paris",
+           "responseC": "Berlin",
+           "responseD": "Madrid"
+         }'

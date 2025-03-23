@@ -1,0 +1,34 @@
+------------- note sur le fichier requirements.txt -------
+Celui ci contient beaucoup de packages parce que je n'ai pas créé de venv pour cet exam 
+
+------------- résultats des queries ----------------------
+
+user@ASUS MINGW64 ~/Desktop/VMs/APIs exam/fastapi_exam_XXXX/fastapi_exam_ (master)  
+$ curl -X GET "http://localhost:9000/verify"
+{"message":"L'API est fonctionnelle."}  
+
+user@ASUS MINGW64 ~/Desktop/VMs/APIs exam/fastapi_exam_XXXX/fastapi_exam_ (master)  
+$ curl -X POST "http://localhost:9000/create_question"      -H "Content-Type: application/json"      -d '{
+           "admin_username": "admin",     
+           "admin_password": "4dm1N",     
+           "number_of_questions": 5
+         }'
+[{"question":"MongoDB et CouchDB sont des bases de données","subject":"BDD","use":"Test de positionnement","correct":"B","responseA":"relationnelles","responseB":"orientées objet","responseC":"orientées colonne","responseD":"orientées graphe","remark":""},{"question":"Pour indexer des données textuelles, je peux utiliser","subject":"BDD","use":"Test de positionnement","correct":"A","responseA":"ElasticSearch","responseB":"Neo4J","responseC":"MySQL","responseD":"","remark":""},{"question":"Cassandra et HBase sont des bases de données","subject":"BDD","use":"Test de positionnement","correct":"C","responseA":"relationnelles","responseB":"orientées objet","responseC":"orientées colonne","responseD":"orientées graphe","remark":""},{"question":"OrientDB et Neo4J sont des bases de données","subject":"BDD","use":"Test de positionnement","correct":"D","responseA":"relationnelles","responseB":"orientées objet","responseC":"orientées colonne","responseD":"orientées graphe","remark":""},{"question":"A quoi faire attention lorsqu'on choisit un système de base de données ?","subject":"BDD","use":"Test de positionnement","correct":"D","responseA":"La définition d'un schéma","responseB":"La rapidité de lecture/écriture","responseC":"La différenciation des accés","responseD":"Tous ces points","remark":""}]
+
+
+$ curl -X POST "http://localhost:9000/create_question" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "admin_username": "admin",
+           "admin_password": "4dm1N",
+           "question": "Test question?",
+           "subject": "Test",
+           "correct": ["A"],
+           "use": "multiple_choice",
+           "responseA": "A",
+           "responseB": "B",
+           "responseC": "C",
+           "responseD": "D"
+         }'
+{"message":"Question créée avec succès."}
+
